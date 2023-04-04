@@ -1,0 +1,94 @@
+<div class="row mx-auto my-5">
+  <div class="col-md-4 col-md-offset-4" style="border: 1px solid rgb(100, 98, 98); padding: 30px;">
+    <form class="form-horizontal" role="form">
+      <fieldset>
+        <legend>Address Details:
+          <strong>Template Driven Form</strong>
+        </legend>
+
+
+        <form>
+          <div class="form-group row">
+            <label class="col-sm-2 col-form-label" for="textinput">Endereço</label>
+            <div class="col-sm-10">
+              <input type="text" name="address" placeholder="Enter Address" class="form-control" [(ngModel)]="model.address">
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label class="col-sm-2 col-form-label" for="textinput">CEP</label>
+            <div class="col-sm-4">
+              <input type="text" name="cep" placeholder="Enter Post Code" class="form-control" [(ngModel)]="cep" required (blur)="showPopup = cep.trim().length === 0" (ngModelChange)="saveCEP()">
+              <div *ngIf="cep.trim().length === 0" class="alert alert-danger">Digite um valor para o CEP</div>
+              <div *ngIf="erro" class="alert alert-danger">{{ erro }}</div>
+              <div *ngIf="isLoading" class="alert alert-info">Carregando...</div>
+            </div>
+
+
+          </div>
+
+          <div class="form-group row">
+            <label class="col-sm-2 col-form-label" for="textinput">Cidade</label>
+            <div class="col-sm-10">
+              <input type="text" name="city" placeholder="Enter City Name" class="form-control" [(ngModel)]="model.city">
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label class="col-sm-2 col-form-label" for="textinput">Estado</label>
+            <div class="col-sm-4">
+              <input type="text" name="state" placeholder="State" class="form-control" [(ngModel)]="model.state">
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label class="col-sm-2 col-form-label" for="textinput">País</label>
+            <div class="col-sm-4">
+              <input type="text" name="country" placeholder="Country" class="form-control" [(ngModel)]="model.country">
+            </div>
+          </div>
+        </form>
+
+
+        <div class="form-group">
+
+
+
+
+
+        </div>
+
+
+
+        <div class="form-group">
+          <div class="col-sm-2 form-check">
+            <input type="checkbox" name="agreement" class="form-check-input" (change)="onAgreementChange($event)">
+
+          </div>
+          <label class="col-sm-10 form-check-label">I agree to Terms & Conditions</label>
+
+        </div>
+
+
+
+
+
+
+        <div class="col-sm-12">
+          <span style="color: red;" *ngIf="!agreedToTerms">Please agree to the Terms & Conditions.</span>
+        </div>
+
+
+
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <div class="pull-right">
+              <button type="submit" class="btn btn-primary" style="margin: 4px;">Save</button>
+              <button type="reset" class="btn btn-default">Reset</button>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</div>
